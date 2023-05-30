@@ -32,12 +32,17 @@ function(myproject_setup_dependencies)
     cpmaddpackage("gh:CLIUtils/CLI11@2.3.2")
   endif()
 
-  if(NOT TARGET ftxui::screen)
-    cpmaddpackage("gh:ArthurSonzogni/FTXUI#e23dbc7473654024852ede60e2121276c5aab660")
-  endif()
-
-  if(NOT TARGET tools::tools)
-    cpmaddpackage("gh:lefticus/tools#update_build_system")
+  if(NOT TARGET Eigen3::Eigen)
+    cpmaddpackage(
+      GITLAB_REPOSITORY
+      "libeigen/eigen"
+      GIT_TAG
+      "3.4.0"
+      OPTIONS
+      "EIGEN_BUILD_DOC NO"
+      "EIGEN_LEAVE_TEST_IN_ALL_TARGET YES"
+      "BUILD_TESTING NO"
+      "EIGEN_BUILD_PKGCONFIG NO")
   endif()
 
 endfunction()
