@@ -11,7 +11,8 @@ on:
     branches:
       - main
       - develop
-
+permissions:
+  contents: write
 env:
   TEMPLATES_PATH: ".github/template"
 
