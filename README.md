@@ -11,29 +11,26 @@ This is a C++ Best Practices GitHub template fork for getting up and running wit
 
 By default (collectively known as `ENABLE_DEVELOPER_MODE`)
 
- * Address Sanitizer and Undefined Behavior Sanitizer enabled where possible
- * Warnings as errors
- * clang-tidy and cppcheck static analysis
- * CPM for dependencies
+* Address Sanitizer and Undefined Behavior Sanitizer enabled where possible
+* Warnings as errors
+* clang-tidy and cppcheck static analysis
+* CPM for dependencies
 
 It includes
 
- * a basic CLI example
- * examples for fuzz, unit, and constexpr testing
- * large github action testing matrix
+* a basic CLI example
+* examples for fuzz, unit, and constexpr testing
+* large github action testing matrix
 
 It requires
 
- * cmake
- * a compiler
-
-
-This project gets you started with a simple example of using FTXUI, which happens to also be a game.
-
+* cmake
+* a compiler
 
 ## Getting Started
 
 ### Use the Github template
+
 First, click the green `Use this template` button near the top of this page.
 This will take you to Github's ['Generate Repository'](https://github.com/cpp-best-practices/cmake_template/generate) page.
 Fill in a repository name and short description, and click 'Create repository from template'.
@@ -49,10 +46,10 @@ Now you can clone the project locally and get to work!
 
 ## More Details
 
- * [Dependency Setup](README_dependencies.md)
- * [Building Details](README_building.md)
- * [Troubleshooting](README_troubleshooting.md)
- * [Docker](README_docker.md)
+* [Dependency Setup](README_dependencies.md)
+* [Building Details](README_building.md)
+* [Troubleshooting](README_troubleshooting.md)
+* [Docker](README_docker.md)
 
 ## Testing
 
@@ -61,5 +58,3 @@ See [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutori
 ## Fuzz testing
 
 See [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
-
-
