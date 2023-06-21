@@ -1,12 +1,12 @@
 # cmake_template
 
-[![ci](https://github.com/cpp-best-practices/cmake_template/actions/workflows/ci.yml/badge.svg)](https://github.com/cpp-best-practices/cmake_template/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/cpp-best-practices/cmake_template/branch/main/graph/badge.svg)](https://codecov.io/gh/cpp-best-practices/cmake_template)
-[![CodeQL](https://github.com/cpp-best-practices/cmake_template/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/cpp-best-practices/cmake_template/actions/workflows/codeql-analysis.yml)
+[![ci](https://github.com/meintte/cmake_template/actions/workflows/ci.yml/badge.svg)](https://github.com/meintte/cmake_template/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/meintte/cmake_template/branch/main/graph/badge.svg)](https://codecov.io/gh/meintte/cmake_template)
+[![CodeQL](https://github.com/meintte/cmake_template/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/meintte/cmake_template/actions/workflows/codeql-analysis.yml)
 
 ## About cmake_template
 
-This is a C++ Best Practices GitHub template fork for getting up and running with C++ quickly.
+This is a C++ Best Practices GitHub template (fork of https://github.com/cpp-best-practices/cmake_template) for getting up and running with C++ quickly.
 
 By default (collectively known as `ENABLE_DEVELOPER_MODE`)
 
@@ -31,7 +31,7 @@ It requires
 ### Use the Github template
 
 First, click the green `Use this template` button near the top of this page.
-This will take you to Github's ['Generate Repository'](https://github.com/cpp-best-practices/cmake_template/generate) page.
+This will take you to Github's ['Generate Repository'](https://github.com/meintte/cmake_template/generate) page.
 Fill in a repository name and short description, and click 'Create repository from template'.
 This will allow you to create a new repository in your Github account,
 prepopulated with the contents of this project.
@@ -56,5 +56,3 @@ See [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutori
 ## Fuzz testing
 
 See [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
-
-

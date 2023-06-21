@@ -10,7 +10,7 @@ target_link_system_libraries(Utils PRIVATE Eigen3::Eigen)
 target_include_directories(Utils ${WARNING_GUARD} PUBLIC $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
                                                          $<BUILD_INTERFACE:${PROJECT_BINARY_DIR}/include>)
 
-target_compile_features(Utils PUBLIC cxx_std_20)
+target_compile_features(Utils PUBLIC cxx_std_${CMAKE_CXX_STANDARD})
 
 set_target_properties(
   Utils

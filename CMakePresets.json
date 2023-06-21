@@ -65,19 +65,8 @@
                 "CMAKE_C_COMPILER": "cl",
                 "CMAKE_CXX_COMPILER": "cl",
                 "CMAKE_BUILD_TYPE": "Debug",
-                "ENABLE_DEVELOPER_MODE": "ON"
-            }
-        },
-        {
-            "name": "windows-msvc-release-developer-mode",
-            "displayName": "msvc Release (Developer Mode)",
-            "description": "Target Windows with the msvc compiler, release build type",
-            "inherits": "conf-windows-common",
-            "cacheVariables": {
-                "CMAKE_C_COMPILER": "cl",
-                "CMAKE_CXX_COMPILER": "cl",
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
-                "ENABLE_DEVELOPER_MODE": "ON"
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
             }
         },
         {
@@ -89,7 +78,47 @@
                 "CMAKE_C_COMPILER": "cl",
                 "CMAKE_CXX_COMPILER": "cl",
                 "CMAKE_BUILD_TYPE": "Debug",
-                "ENABLE_DEVELOPER_MODE": "OFF"
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            }
+        },
+        {
+            "name": "windows-msvc-reldeb-developer-mode",
+            "displayName": "msvc RelWithDebInfo (Developer Mode)",
+            "description": "Target Windows with the msvc compiler, release with debug info build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl",
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
+            }
+        },
+        {
+            "name": "windows-msvc-reldeb-user-mode",
+            "displayName": "msvc RelWithDebInfo (User Mode)",
+            "description": "Target Windows with the msvc compiler, release with debug info build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl",
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            }
+        },
+        {
+            "name": "windows-msvc-release-developer-mode",
+            "displayName": "msvc Release (Developer Mode)",
+            "description": "Target Windows with the msvc compiler, release build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl",
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
             }
         },
         {
@@ -100,19 +129,22 @@
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl",
                 "CMAKE_CXX_COMPILER": "cl",
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
-                "ENABLE_DEVELOPER_MODE": "OFF"
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
             }
         },
         {
-            "name": "windows-clang-debug",
-            "displayName": "clang Debug",
+            "name": "windows-clang-debug-developer-mode",
+            "displayName": "clang Debug (Developer Mode)",
             "description": "Target Windows with the clang compiler, debug build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang-cl",
                 "CMAKE_CXX_COMPILER": "clang-cl",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -121,14 +153,70 @@
             }
         },
         {
-            "name": "windows-clang-release",
-            "displayName": "clang Release",
+            "name": "windows-clang-debug-user-mode",
+            "displayName": "clang Debug (User Mode)",
+            "description": "Target Windows with the clang compiler, debug build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "windows-clang-reldeb-developer-mode",
+            "displayName": "clang RelWithDebInfo (Developer Mode)",
+            "description": "Target Windows with the clang compiler, release with debug info build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "windows-clang-reldeb-user-mode",
+            "displayName": "clang RelWithDebInfo (User Mode)",
+            "description": "Target Windows with the clang compiler, release with debug info build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "windows-clang-release-developer-mode",
+            "displayName": "clang Release (Developer Mode)",
             "description": "Target Windows with the clang compiler, release build type",
             "inherits": "conf-windows-common",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang-cl",
                 "CMAKE_CXX_COMPILER": "clang-cl",
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
             },
             "vendor": {
                 "microsoft.com/VisualStudioSettings/CMake/1.0": {
@@ -137,47 +225,177 @@
             }
         },
         {
-            "name": "unixlike-gcc-debug",
-            "displayName": "gcc Debug",
+            "name": "windows-clang-release-user-mode",
+            "displayName": "clang Release (User Mode)",
+            "description": "Target Windows with the clang compiler, release build type",
+            "inherits": "conf-windows-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl",
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "unixlike-gcc-debug-developer-mode",
+            "displayName": "gcc Debug (Developer Mode)",
             "description": "Target Unix-like OS with the gcc compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
             }
         },
         {
-            "name": "unixlike-gcc-release",
-            "displayName": "gcc Release",
+            "name": "unixlike-gcc-debug-user-mode",
+            "displayName": "gcc Debug (User Mode)",
+            "description": "Target Unix-like OS with the gcc compiler, debug build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            }
+        },
+        {
+            "name": "unixlike-gcc-reldeb-developer-mode",
+            "displayName": "gcc RelWithDebInfo (Developer Mode)",
+            "description": "Target Unix-like OS with the gcc compiler, release with debug info build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
+            }
+        },
+        {
+            "name": "unixlike-gcc-reldeb-user-mode",
+            "displayName": "gcc RelWithDebInfo (User Mode)",
+            "description": "Target Unix-like OS with the gcc compiler, release with debug info build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            }
+        },
+        {
+            "name": "unixlike-gcc-release-developer-mode",
+            "displayName": "gcc Release (Developer Mode)",
             "description": "Target Unix-like OS with the gcc compiler, release build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "gcc",
                 "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
             }
         },
         {
-            "name": "unixlike-clang-debug",
-            "displayName": "clang Debug",
+            "name": "unixlike-gcc-release-user-mode",
+            "displayName": "gcc Release (User Mode)",
+            "description": "Target Unix-like OS with the gcc compiler, release build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            }
+        },
+        {
+            "name": "unixlike-clang-debug-developer-mode",
+            "displayName": "clang Debug (Developer Mode)",
             "description": "Target Unix-like OS with the clang compiler, debug build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang",
                 "CMAKE_CXX_COMPILER": "clang++",
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
             }
         },
         {
-            "name": "unixlike-clang-release",
-            "displayName": "clang Release",
+            "name": "unixlike-clang-debug-user-mode",
+            "displayName": "clang Debug (User Mode)",
+            "description": "Target Unix-like OS with the clang compiler, debug build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            }
+        },
+        {
+            "name": "unixlike-clang-reldeb-developer-mode",
+            "displayName": "clang RelWithDebInfo (Developer Mode)",
+            "description": "Target Unix-like OS with the clang compiler, release with debug info build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
+            }
+        },
+        {
+            "name": "unixlike-clang-reldeb-user-mode",
+            "displayName": "clang RelWithDebInfo (User Mode)",
+            "description": "Target Unix-like OS with the clang compiler, release with debug info build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
+            }
+        },
+        {
+            "name": "unixlike-clang-release-developer-mode",
+            "displayName": "clang Release (Developer Mode)",
             "description": "Target Unix-like OS with the clang compiler, release build type",
             "inherits": "conf-unixlike-common",
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang",
                 "CMAKE_CXX_COMPILER": "clang++",
-                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "ON",
+                "myproject_ENABLE_HARDENING": "ON"
+            }
+        },
+        {
+            "name": "unixlike-clang-release-user-mode",
+            "displayName": "clang Release (User Mode)",
+            "description": "Target Unix-like OS with the clang compiler, release build type",
+            "inherits": "conf-unixlike-common",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release",
+                "myproject_ENABLE_DEVELOPER_MODE": "OFF",
+                "myproject_ENABLE_HARDENING": "OFF"
             }
         }
     ],
@@ -202,6 +420,27 @@
             "configurePreset": "windows-msvc-debug-developer-mode"
         },
         {
+            "name": "test-windows-msvc-debug-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "windows-msvc-debug-user-mode"
+        },
+        {
+            "name": "test-windows-msvc-reldeb-developer-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "windows-msvc-reldeb-developer-mode"
+        },
+        {
+            "name": "test-windows-msvc-reldeb-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "windows-msvc-reldeb-user-mode"
+        },
+        {
             "name": "test-windows-msvc-release-developer-mode",
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
@@ -209,46 +448,137 @@
             "configurePreset": "windows-msvc-release-developer-mode"
         },
         {
-            "name": "test-windows-clang-debug",
+            "name": "test-windows-msvc-release-user-mode",
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
-            "configurePreset": "windows-clang-debug"
+            "configurePreset": "windows-msvc-release-user-mode"
         },
         {
-            "name": "test-windows-clang-release",
+            "name": "test-windows-clang-debug-developer-mode",
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
-            "configurePreset": "windows-clang-release"
+            "configurePreset": "windows-clang-debug-developer-mode"
         },
         {
-            "name": "test-unixlike-gcc-debug",
+            "name": "test-windows-clang-debug-user-mode",
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
-            "configurePreset": "unixlike-gcc-debug"
+            "configurePreset": "windows-clang-debug-user-mode"
         },
         {
-            "name": "test-unixlike-gcc-release",
+            "name": "test-windows-clang-reldeb-developer-mode",
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
-            "configurePreset": "unixlike-gcc-release"
+            "configurePreset": "windows-clang-reldeb-developer-mode"
         },
         {
-            "name": "test-unixlike-clang-debug",
+            "name": "test-windows-clang-reldeb-user-mode",
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
-            "configurePreset": "unixlike-clang-debug"
+            "configurePreset": "windows-clang-reldeb-user-mode"
         },
         {
-            "name": "test-unixlike-clang-release",
+            "name": "test-windows-clang-release-developer-mode",
             "displayName": "Strict",
             "description": "Enable output and stop on failure",
             "inherits": "test-common",
-            "configurePreset": "unixlike-clang-release"
+            "configurePreset": "windows-clang-release-developer-mode"
+        },
+        {
+            "name": "test-windows-clang-release-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "windows-clang-release-user-mode"
+        },
+        {
+            "name": "test-unixlike-gcc-debug-developer-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-gcc-debug-developer-mode"
+        },
+        {
+            "name": "test-unixlike-gcc-debug-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-gcc-debug-user-mode"
+        },
+        {
+            "name": "test-unixlike-gcc-reldeb-developer-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-gcc-reldeb-developer-mode"
+        },
+        {
+            "name": "test-unixlike-gcc-reldeb-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-gcc-reldeb-user-mode"
+        },
+        {
+            "name": "test-unixlike-gcc-release-developer-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-gcc-release-developer-mode"
+        },
+        {
+            "name": "test-unixlike-gcc-release-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-gcc-release-user-mode"
+        },
+        {
+            "name": "test-unixlike-clang-debug-developer-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-debug-developer-mode"
+        },
+        {
+            "name": "test-unixlike-clang-debug-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-debug-user-mode"
+        },
+        {
+            "name": "test-unixlike-clang-reldeb-developer-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-reldeb-developer-mode"
+        },
+        {
+            "name": "test-unixlike-clang-reldeb-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-reldeb-user-mode"
+        },
+        {
+            "name": "test-unixlike-clang-release-developer-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-release-developer-mode"
+        },
+        {
+            "name": "test-unixlike-clang-release-user-mode",
+            "displayName": "Strict",
+            "description": "Enable output and stop on failure",
+            "inherits": "test-common",
+            "configurePreset": "unixlike-clang-release-user-mode"
         }
     ]
 }

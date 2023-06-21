@@ -21,6 +21,6 @@ protected:
 class UniformSampler2d : public Sampler2d {
 public:
     using Sampler2d::Sampler2d;
-    
+
     Eigen::Vector2d sample() const override;
 };

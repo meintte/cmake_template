@@ -1,4 +1,5 @@
-# A fuzz test runs until it finds an error. This particular one is going to rely on libFuzzer.
+# A fuzz test runs until it finds an error. This particular one is going to rely
+# on libFuzzer.
 #
 
 add_executable(fuzz_tester fuzz_tester.cpp)
