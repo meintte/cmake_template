@@ -52,38 +52,38 @@ function(myproject_setup_dependencies)
       YES)
   endif()
 
-  if(NOT TARGET glfw::glfw)
-    cpmaddpackage(
-      NAME
-      glfw
-      GITHUB_REPOSITORY
-      "glfw/glfw"
-      GIT_TAG
-      "3.3.8"
-      OPTIONS
-      "GLFW_BUILD_EXAMPLES OFF"
-      "GLFW_BUILD_TESTS OFF"
-      "GLFW_BUILD_DOCS OFF"
-      "GLFW_INSTALL OFF"
-      EXCLUDE_FROM_ALL
-      YES)
-  endif()
-
-  if(NOT TARGET imgui::imgui)
-    cpmaddpackage(
-      NAME
-      imgui
-      GITHUB_REPOSITORY
-      "ocornut/imgui"
-      GIT_TAG
-      "docking"
-      EXCLUDE_FROM_ALL
-      YES)
-  endif()
-
   if(NOT TARGET tools::tools)
     cpmaddpackage("gh:lefticus/tools#update_build_system")
   endif()
+
+  # if(NOT TARGET glfw::glfw)
+  #   cpmaddpackage(
+  #     NAME
+  #     glfw
+  #     GITHUB_REPOSITORY
+  #     "glfw/glfw"
+  #     GIT_TAG
+  #     "3.3.8"
+  #     OPTIONS
+  #     "GLFW_BUILD_EXAMPLES OFF"
+  #     "GLFW_BUILD_TESTS OFF"
+  #     "GLFW_BUILD_DOCS OFF"
+  #     "GLFW_INSTALL OFF"
+  #     EXCLUDE_FROM_ALL
+  #     YES)
+  # endif()
+
+  # if(NOT TARGET imgui::imgui)
+  #   cpmaddpackage(
+  #     NAME
+  #     imgui
+  #     GITHUB_REPOSITORY
+  #     "ocornut/imgui"
+  #     GIT_TAG
+  #     "docking"
+  #     EXCLUDE_FROM_ALL
+  #     YES)
+  # endif()
 
   if(NOT TARGET Eigen3::Eigen)
     cpmaddpackage(
