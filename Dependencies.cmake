@@ -16,12 +16,14 @@ function(myproject_setup_dependencies)
     cpmaddpackage(
       NAME
       spdlog
-      VERSION
-      1.11.0
       GITHUB_REPOSITORY
       "gabime/spdlog"
+      VERSION
+      1.11.0
       OPTIONS
-      "SPDLOG_FMT_EXTERNAL ON")
+      "SPDLOG_FMT_EXTERNAL ON"
+      EXCLUDE_FROM_ALL
+      YES)
   endif()
 
   if(NOT TARGET Catch2::Catch2WithMain)
@@ -33,7 +35,21 @@ function(myproject_setup_dependencies)
   endif()
 
   if(NOT TARGET ftxui::screen)
-    cpmaddpackage("gh:ArthurSonzogni/FTXUI#e23dbc7473654024852ede60e2121276c5aab660")
+    cpmaddpackage(
+      NAME
+      FTXUI
+      GITHUB_REPOSITORY
+      "ArthurSonzogni/FTXUI"
+      GIT_TAG
+      "v4.1.1"
+      OPTIONS
+      "FTXUI_BUILD_EXAMPLES OFF"
+      "FTXUI_BUILD_DOCS OFF"
+      "FTXUI_BUILD_TESTS OFF"
+      "FTXUI_BUILD_TESTS_FUZZER OFF"
+      "FTXUI_ENABLE_INSTALL OFF"
+      EXCLUDE_FROM_ALL
+      YES)
   endif()
 
   if(NOT TARGET tools::tools)
@@ -42,15 +58,19 @@ function(myproject_setup_dependencies)
 
   if(NOT TARGET Eigen3::Eigen)
     cpmaddpackage(
+      NAME
+      Eigen
       GITLAB_REPOSITORY
       "libeigen/eigen"
       GIT_TAG
       "3.4.0"
       OPTIONS
       "EIGEN_BUILD_DOC NO"
-      "EIGEN_LEAVE_TEST_IN_ALL_TARGET YES"
+      "EIGEN_LEAVE_TEST_IN_ALL_TARGET NO"
       "BUILD_TESTING NO"
-      "EIGEN_BUILD_PKGCONFIG NO")
+      "EIGEN_BUILD_PKGCONFIG NO"
+      EXCLUDE_FROM_ALL
+      YES)
   endif()
 
 endfunction()

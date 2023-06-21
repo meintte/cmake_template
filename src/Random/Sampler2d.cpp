@@ -1,5 +1,5 @@
-#include <myproject/Utils/Random.hpp>
-#include <myproject/Utils/Sampler2d.hpp>
+#include <myproject/Random/Random.hpp>
+#include <myproject/Random/Sampler2d.hpp>
 
 Sampler2d::Sampler2d(const Eigen::AlignedBox2d& box) : m_box(box) {}
 
