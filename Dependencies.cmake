@@ -52,6 +52,35 @@ function(myproject_setup_dependencies)
       YES)
   endif()
 
+  if(NOT TARGET glfw::glfw)
+    cpmaddpackage(
+      NAME
+      glfw
+      GITHUB_REPOSITORY
+      "glfw/glfw"
+      GIT_TAG
+      "3.3.8"
+      OPTIONS
+      "GLFW_BUILD_EXAMPLES OFF"
+      "GLFW_BUILD_TESTS OFF"
+      "GLFW_BUILD_DOCS OFF"
+      "GLFW_INSTALL OFF"
+      EXCLUDE_FROM_ALL
+      YES)
+  endif()
+
+  if(NOT TARGET imgui::imgui)
+    cpmaddpackage(
+      NAME
+      imgui
+      GITHUB_REPOSITORY
+      "ocornut/imgui"
+      GIT_TAG
+      "docking"
+      EXCLUDE_FROM_ALL
+      YES)
+  endif()
+
   if(NOT TARGET tools::tools)
     cpmaddpackage("gh:lefticus/tools#update_build_system")
   endif()
@@ -65,11 +94,16 @@ function(myproject_setup_dependencies)
       GIT_TAG
       "3.4.0"
       OPTIONS
-      "EIGEN_BUILD_DOC NO"
-      "EIGEN_LEAVE_TEST_IN_ALL_TARGET NO"
-      "BUILD_TESTING NO"
-      "EIGEN_BUILD_PKGCONFIG NO"
+      "EIGEN_BUILD_DOC OFF"
+      "EIGEN_LEAVE_TEST_IN_ALL_TARGET OFF"
+      "BUILD_TESTING OFF"
+      "EIGEN_BUILD_PKGCONFIG OFF"
+      "EIGEN_BUILD_BLAS OFF"
+      "EIGEN_BUILD_LAPACK OFF"
+      "EIGEN_BUILD_CMAKE_PACKAGE OFF"
       EXCLUDE_FROM_ALL
+      YES
+      SYSTEM
       YES)
   endif()
 
