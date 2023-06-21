@@ -47,7 +47,6 @@ Now you can clone the project locally and get to work!
 
 * [Dependency Setup](README_dependencies.md)
 * [Building Details](README_building.md)
-* [Troubleshooting](README_troubleshooting.md)
 * [Docker](README_docker.md)
 
 ## Testing
@@ -57,3 +56,5 @@ See [Catch2 tutorial](https://github.com/catchorg/Catch2/blob/master/docs/tutori
 ## Fuzz testing
 
 See [libFuzzer Tutorial](https://github.com/google/fuzzing/blob/master/tutorial/libFuzzerTutorial.md)
+
+

@@ -10,8 +10,6 @@ int main(int argc, const char** argv) {
                                  myproject::cmake::project_name,
                                  myproject::cmake::project_version)};
 
-        // std::optional<std::string> message;
-        // app.add_option("-m,--message", message, "A message to print out");
         bool show_version = false;
         app.add_flag("--version", show_version, "Show version information");
 
