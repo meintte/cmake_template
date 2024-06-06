@@ -14,18 +14,15 @@ Checks: "*,
         -cppcoreguidelines-non-private-member-variables-in-classes,
         -misc-non-private-member-variables-in-classes,
         -bugprone-easily-swappable-parameters,
+        -cppcoreguidelines-avoid-magic-numbers,
+        -readability-magic-numbers,
+        -readability-identifier-length,
+        -readability-uppercase-literal-suffix,
+        -hicpp-uppercase-literal-suffix,
 "
+CheckOptions:
+    - key: misc-include-cleaner.IgnoreHeaders
+      value: "(Eigen|fmt|spdlog|CLI|catch2|nlohmann)/.*"
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 FormatStyle:     none
-
-CheckOptions:
-  - key: readability-identifier-length.IgnoredVariableNames
-    value: 'x|y|z'
-  - key: readability-identifier-length.IgnoredParameterNames
-    value: 'x|y|z'
-
-
-
-
-

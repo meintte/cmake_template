@@ -18,8 +18,9 @@ macro(myproject_supports_sanitizers)
 endmacro()
 
 macro(myproject_setup_options)
+  # Developer mode sets a bunch of options that are useful for
+  # development like sanitizers, static analysis, etc.
   option(myproject_ENABLE_DEVELOPER_MODE "Enable developer mode" ON)
-
   option(myproject_ENABLE_HARDENING "Enable hardening" ON)
   cmake_dependent_option(
     myproject_ENABLE_GLOBAL_HARDENING
@@ -28,63 +29,53 @@ macro(myproject_setup_options)
     myproject_ENABLE_HARDENING
     OFF)
 
-  # Regardless of developer mode
+  # General options
   option(myproject_ENABLE_COVERAGE "Enable coverage reporting" OFF)
   option(myproject_ENABLE_PCH "Enable precompiled headers" OFF)
   option(myproject_ENABLE_USER_LINKER "Enable user-selected linker" OFF)
   option(myproject_ENABLE_UNITY_BUILD "Enable unity builds" OFF)
-  if(NOT PROJECT_IS_TOP_LEVEL)
-    mark_as_advanced(
-      myproject_ENABLE_COVERAGE
-      myproject_ENABLE_PCH
-      myproject_ENABLE_USER_LINKER
-      myproject_ENABLE_UNITY_BUILD)
-  endif()
+  # Sanitizers
+  option(myproject_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
+  option(myproject_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
+  option(myproject_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
 
-  # General options
-  if(NOT PROJECT_IS_TOP_LEVEL
-     OR NOT myproject_ENABLE_DEVELOPER_MODE
-     OR myproject_PACKAGING_MAINTAINER_MODE)
+  # Options which depend on whether we are in developer mode or not
+  if(NOT PROJECT_IS_TOP_LEVEL OR NOT myproject_ENABLE_DEVELOPER_MODE)
     option(myproject_ENABLE_IPO "Enable IPO/LTO" OFF)
     option(myproject_WARNINGS_AS_ERRORS "Treat Warnings As Errors" OFF)
     option(myproject_ENABLE_CLANG_TIDY "Enable clang-tidy" OFF)
     option(myproject_ENABLE_CPPCHECK "Enable cpp-check analysis" OFF)
     option(myproject_ENABLE_CACHE "Enable ccache" OFF)
+
+    option(myproject_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" OFF)
+    option(myproject_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" OFF)
+
   else()
     option(myproject_ENABLE_IPO "Enable IPO/LTO" ON)
     option(myproject_WARNINGS_AS_ERRORS "Treat Warnings As Errors" ON)
     option(myproject_ENABLE_CLANG_TIDY "Enable clang-tidy" ON)
     option(myproject_ENABLE_CPPCHECK "Enable cpp-check analysis" ON)
     option(myproject_ENABLE_CACHE "Enable ccache" ON)
+
+    myproject_supports_sanitizers()
+    option(myproject_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" ${SUPPORTS_ASAN})
+    option(myproject_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" ${SUPPORTS_UBSAN})
+
   endif()
+
   if(NOT PROJECT_IS_TOP_LEVEL)
     mark_as_advanced(
+      myproject_ENABLE_COVERAGE
+      myproject_ENABLE_PCH
+      myproject_ENABLE_USER_LINKER
+      myproject_ENABLE_UNITY_BUILD
+      #
       myproject_ENABLE_IPO
       myproject_WARNINGS_AS_ERRORS
       myproject_ENABLE_CLANG_TIDY
       myproject_ENABLE_CPPCHECK
-      myproject_ENABLE_CACHE)
-  endif()
-
-  # Sanitizers
-  myproject_supports_sanitizers()
-  if(NOT PROJECT_IS_TOP_LEVEL
-     OR NOT myproject_ENABLE_DEVELOPER_MODE
-     OR myproject_PACKAGING_MAINTAINER_MODE)
-    option(myproject_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
-  else()
-    option(myproject_ENABLE_SANITIZER_ADDRESS "Enable address sanitizer" ${SUPPORTS_ASAN})
-    option(myproject_ENABLE_SANITIZER_LEAK "Enable leak sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_UNDEFINED "Enable undefined sanitizer" ${SUPPORTS_UBSAN})
-    option(myproject_ENABLE_SANITIZER_THREAD "Enable thread sanitizer" OFF)
-    option(myproject_ENABLE_SANITIZER_MEMORY "Enable memory sanitizer" OFF)
-  endif()
-  if(NOT PROJECT_IS_TOP_LEVEL)
-    mark_as_advanced(
+      myproject_ENABLE_CACHE
+      #
       myproject_ENABLE_SANITIZER_ADDRESS
       myproject_ENABLE_SANITIZER_LEAK
       myproject_ENABLE_SANITIZER_UNDEFINED
@@ -161,7 +152,9 @@ macro(myproject_local_options)
     ${myproject_ENABLE_SANITIZER_THREAD}
     ${myproject_ENABLE_SANITIZER_MEMORY})
 
-  set_target_properties(myproject_options PROPERTIES UNITY_BUILD ${myproject_ENABLE_UNITY_BUILD})
+  if(myproject_ENABLE_UNITY_BUILD)
+    set_target_properties(myproject_options PROPERTIES UNITY_BUILD ${myproject_ENABLE_UNITY_BUILD})
+  endif()
 
   if(myproject_ENABLE_PCH)
     target_precompile_headers(
