@@ -36,21 +36,7 @@ function(myproject_setup_dependencies)
   endif()
 
   if(NOT TARGET ftxui::screen)
-    cpmaddpackage(
-      NAME
-      FTXUI
-      GITHUB_REPOSITORY
-      "ArthurSonzogni/FTXUI"
-      GIT_TAG
-      "v4.1.1"
-      OPTIONS
-      "FTXUI_BUILD_EXAMPLES OFF"
-      "FTXUI_BUILD_DOCS OFF"
-      "FTXUI_BUILD_TESTS OFF"
-      "FTXUI_BUILD_TESTS_FUZZER OFF"
-      "FTXUI_ENABLE_INSTALL OFF"
-      EXCLUDE_FROM_ALL
-      YES)
+    cpmaddpackage("gh:ArthurSonzogni/FTXUI@5.0.0")
   endif()
 
   if(NOT TARGET tools::tools)
